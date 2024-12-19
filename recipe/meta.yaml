@@ -1,0 +1,70 @@
+{% set name = "mip" %}
+{% set version = "1.16" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/coin-or/python-mip.git
+  git_rev: 0ccb81115543e737ab74a4f1309891ce5650c8d5
+  patches:
+    - patches/cbclibpath.patch
+    - patches/pyproject.patch
+
+build:
+  number: 0
+
+outputs:
+  - name: {{ name|lower }}
+    script: build_package.sh
+
+requirements:
+  build:
+    - gnuconfig  # [unix]
+    - {{ compiler('c') }}
+    - {{ stdlib('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
+    - file
+    - git
+    - libtool
+    - pkg-config
+    - zlib
+    - make  # [unix]
+    - wget
+    - patch
+    - pip
+    - python >=3.7,<3.13
+    - cffi >1.15
+  host:
+    - zlib
+    - bzip2
+    - libblas
+    - libcblas
+    - liblapack
+    - python >=3.7,<3.13
+    - setuptools
+    - setuptools-scm
+    - pip
+  run:
+    - python >=3.7,<3.13
+    - cffi >1.15
+
+test:
+  imports:
+    - mip
+  commands:
+    - pip check
+    - python -c "import mip; mip.Model(solver_name='CBC')"
+  requires:
+    - pip
+
+about:
+  summary: Python tools for Modeling and Solving Mixed-Integer Linear Programs (MIPs)
+  license: EPL-2.0
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - JoOkuma
