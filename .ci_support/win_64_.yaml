@@ -4,3 +4,14 @@ channel_targets:
 - royerlab main
 target_platform:
 - win-64
+c_compiler:
+- vs2019
+c_stdlib:
+- vs
+cxx_compiler:
+- vs2019
+numpy:
+- '2.0'
+zip_keys:
+- - python
+  - numpy
