@@ -11,6 +11,7 @@ COINBREW_URL="https://raw.githubusercontent.com/coin-or/coinbrew/master/coinbrew
 echo "Python MIP libraries directory: $MIPLIBDIR"
 echo "CBC library binary name: $BINNAME"
 
+python --version
 /opt/conda/bin/python --version
 
 # Check if Python is available
