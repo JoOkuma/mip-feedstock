@@ -26,7 +26,7 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - file
+    - file  # [not win]
     - git
     - libtool  # [not win]
     - pkg-config
