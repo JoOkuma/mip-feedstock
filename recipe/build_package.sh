@@ -51,4 +51,4 @@ $CXX -shared -Ofast -fPIC -o $MIPLIBDIR/$BINNAME \
 echo "Shared library compiled successfully."
 
 # Install the Python package
-pip install . -vv
+python -m pip install . -vv
