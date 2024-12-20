@@ -11,9 +11,13 @@ COINBREW_URL="https://raw.githubusercontent.com/coin-or/coinbrew/master/coinbrew
 echo "Python MIP libraries directory: $MIPLIBDIR"
 echo "CBC library binary name: $BINNAME"
 
+# Use the PREFIX environment
+python="${CONDA_PREFIX}/bin/python"
+which $python
+
 # Check if Python is available
-if ! command -v python &>/dev/null; then
-    echo "Python is not available in the current environment"
+if ! command -v $python &>/dev/null; then
+    echo "$python (Python) is not available in the current environment"
     exit 1
 fi
 
@@ -57,4 +61,4 @@ $CXX -shared -Ofast -fPIC -o $MIPLIBDIR/$BINNAME \
 echo "Shared library compiled successfully."
 
 # Install the Python package
-pip install . -vv
+$python -m pip install . -vv
