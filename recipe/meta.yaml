@@ -21,19 +21,19 @@ outputs:
 
 requirements:
   build:
-    - gnuconfig  # [unix]
+    - gnuconfig  # [not win]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - file
     - git
-    - libtool
+    - libtool  # [not win]
     - pkg-config
     - zlib
-    - make  # [unix]
-    - wget
-    - patch
+    - make  # [not win]
+    - wget  # [not win]
+    - patch  # [not win]
     - pip
     - python >=3.7,<3.13
     - cffi >1.15
