@@ -12,6 +12,3 @@ cxx_compiler:
 - vs2019
 numpy:
 - '2.0'
-zip_keys:
-- - python
-  - numpy
