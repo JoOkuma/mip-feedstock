@@ -69,6 +69,14 @@ jobs:
         echo "::endgroup::"
         ./.scripts/run_docker_build.sh
 
+    - name: MacOS Set up modern Bash
+      if: matrix.os == 'macos'
+      run: |
+        brew install bash
+        echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+        sudo chsh -s /usr/local/bin/bash
+        bash --version
+
     - name: Build on macOS
       if: matrix.os == 'macos'
       env:
